@@ -71,5 +71,21 @@ export default class PatientController extends BaseController {
         }
     }
 
+    async getAllPatients(req, res, next) {
+        try {
+            logger.info("In Controller of findPatientById")
+            const patientService = new PatientService();
+            const responseObj = new ReponseMessage();
+            const data = await patientService.getAllPatients();
+            logger.info(data);
+            if (data) {
+                responseObj.data = data;
+                super.createResponse.success(res, responseObj);
+            }
+        } catch (error) {
+            logger.error(error);
+            next(error);
+        }
+    }
 
 }

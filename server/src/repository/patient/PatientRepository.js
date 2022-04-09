@@ -4,7 +4,9 @@ import mongoose from 'mongoose';
 export class PatientRepository {
 
     async deletePatientById(patientId) {
-        return await Patient.findByIdAndRemove(mongoose.Types.ObjectId(patientId));
+        const deletedRecord = await Patient.findByIdAndDelete(mongoose.Types.ObjectId(patientId));
+        console.log("deleted is",deletedRecord);
+        return true;
     }
 
     async addPatientDetails(patient) {
@@ -19,6 +21,11 @@ export class PatientRepository {
         console.log("findPatientById");
         const id = mongoose.Types.ObjectId(patientId.toString());
         return await Patient.findById(id);
+    }
+
+    async findAllPatients(patientId) {
+        console.log("findAllPatients");
+        return await Patient.find();
     }
 
     async updatePatientDetails(patientId, patient) {

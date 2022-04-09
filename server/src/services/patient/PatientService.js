@@ -13,7 +13,7 @@ export class PatientService {
     async deletePatientServ(patientId) {
         const patientRepo = new PatientRepository();
         console.log(`Started executing service deletePatientById with id ${patientId}`);
-        await patientRepo.deletePatientById(patientId);
+        return await patientRepo.deletePatientById(patientId);
     }
 
     async updatePatientServ(patientId, patient) {
@@ -32,6 +32,17 @@ export class PatientService {
             const patientRepo = new PatientRepository();
             logger.info('Start executing service => findPatientByIdServ');
             return await patientRepo.findPatientById(patientId);
+        }
+        catch (e) {
+            throw new Error(e);
+        }
+    }
+
+    async getAllPatients() {
+        try {
+            const patientRepo = new PatientRepository();
+            logger.info('Start executing service => findPatientByIdServ');
+            return await patientRepo.findAllPatients();
         }
         catch (e) {
             throw new Error(e);
