@@ -52,7 +52,7 @@ export const config = {
             expiresIn: 1 * 6000,
             algorithm: "HS256",
         },
-        privateKey: process.env.PRIVATE_CLIENT_API_KEY,
+        privateKey: 'privatetoken',
     },
 
 };

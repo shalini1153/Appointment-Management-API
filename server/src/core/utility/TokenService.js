@@ -1,16 +1,14 @@
 import * as jwt from "jsonwebtoken"; 
 
 export default class TokenService {
-    options;
-    privateKey;
 
    constructor(_privateKey,_options){
-      this.options = _options;
-      this.privateKey = _privateKey;
+    TokenService.options = _options;
+    TokenService.privateKey = _privateKey;
     }
 
-    sign(payload) {
-        return jwt.sign(payload,  this.privateKey, this.options);    
+    sign(payload,privateKey, options){
+        return jwt.sign(payload,  privateKey, options);    
     }
     verify(token) {
         return jwt.verify(token, this.privateKey, this.options);            

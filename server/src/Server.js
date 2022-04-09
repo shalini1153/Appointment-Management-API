@@ -3,9 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import app from "./App";
 import config from "./config/Index";
-import dbConnection from "./core/DbConnection";
-import customerDbConnection from "./core/CustomerDbConnection";
 import logger from "./core/Logger";
+import mongoose from 'mongoose';
 
 const PORT = process.env.PORT || config.port;
 const HOST = process.env.HOST || config.host;
@@ -17,8 +16,8 @@ const server = http.createServer(application);
 const listen = () => {
   server.listen(PORT,
     () => {
-      logger.info(`${config.apiName} is running in IP: ${HOST}  PORT : ${PORT}`);
-      logger.info(`Worker ${process.pid} started`);
+      console.log(`${config.apiName} is running in IP: ${HOST}  PORT : ${PORT}`);
+      console.log(`Worker ${process.pid} started`);
     });
 };
 
@@ -31,19 +30,20 @@ const stopServer = () => {
   //});
 };
 
-const startServer = () => {
-  logger.info("Starting Db Server");
-  /*** If Db connection SuccessFul then Start the Server Else Shutdown*/
-  dbConnection.connect().sync({ force: true }).then(() => {
-    customerDbConnection.connect().sync().then(() => {
-      logger.info(`####### MYSQL DB Connected  #######`);
-      listen();
-    }).catch((err) => {
-      logger.info(err.message);
-    });
-  }).catch((err) => {
-    logger.info(err.message);
-  });
+const startServer = async () => {
+  console.log("start");
+  console.info("Starting Db Server");
+  try {
+    // Or using promises
+    mongoose.connect('mongodb://34.136.106.63:27017/appointment_management').then(
+      () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
+      err => { /** handle initial connection error */ }
+    );
+    listen();
+  }
+  catch (e) {
+    console.log(e.message);
+  }
 
 };
 

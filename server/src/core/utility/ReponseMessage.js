@@ -11,16 +11,12 @@
 
 class ResponseMessage {
 
-    httpStatusCode;
-    appCode;
-    message;
-    data;
 
     constructor(_httpStatusCode = 0, _appCode = 0, _message = "", _data) {
-        this.httpStatusCode = _httpStatusCode || null;
-        this.appCode = _appCode || null;
-        this.message = _message || "";
-        this.data = _data || {};
+        ResponseMessage.httpStatusCode = _httpStatusCode || null;
+        ResponseMessage.appCode = _appCode || null;
+        ResponseMessage.message = _message || "";
+        ResponseMessage.data = _data || {};
     }
 }
 

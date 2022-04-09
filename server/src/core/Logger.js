@@ -1,14 +1,10 @@
 import winston from "winston";
-import config from "../config/Index";
+
 class Logger {
 
-    log;
-    logger;
-
-
     constructor() {
-        this.log = config.log || false;  // Rnd
-        this.logger = this.initLogger();
+        Logger.log = true;  // Rnd
+        Logger.logger = this.initLogger();
     }
 
 
