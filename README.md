@@ -41,3 +41,15 @@ kubectl create deployment appointment-management --image=gcr.io/totemic-sector-3
 
 gcloud artifacts repositories create appointment-management-repo --repository-format=docker \
     --location=us-central1 --description="Docker repository"
+    
+    
+    gcloud container clusters create appointment-management-cluster
+    
+    kubectl scale deployment appointment-management --replicas=3
+    
+    kubectl autoscale deployment appointment-management --cpu-percent=80 --min=1 --max=5
+    
+    kubectl expose deployment clublit --name=clublit-service --type=LoadBalancer --port 3000 --target-port 3000
+
+    
+    kubectl expose deployment appointment-management --name=appointment-management-service --type=LoadBalancer --port 3000 --target-port 3000
