@@ -1,4 +1,4 @@
-![til](./Appointment_Management.gif.gif)
+![til](./Appointment_Management.gif)
 
 # Appointment-Management-API
 
