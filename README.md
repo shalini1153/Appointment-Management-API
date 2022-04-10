@@ -1,3 +1,5 @@
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
 # Appointment-Management-API
 
 ba10613b1033af0f1f27033779f3bf2a
