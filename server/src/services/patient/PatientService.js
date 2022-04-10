@@ -1,5 +1,5 @@
 import logger from "../../core/Logger";
-import { PatientRepository } from "../../repository/patient/patientRepository";
+import { PatientRepository } from "../../repository/patient/PatientRepository";
 
 export class PatientService {
 
