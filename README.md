@@ -69,3 +69,19 @@ gcloud artifacts repositories create appointment-management-repo --repository-fo
 
     
     kubectl expose deployment appointment-management --name=appointment-management-service --type=LoadBalancer --port 3000 --target-port 3000
+    
+    docker push gcr.io/totemic-sector-341014/appointment:v1
+    
+    gcloud config set project totemic-sector-341014
+    
+    gcloud container clusters create appointment-cluster
+    
+    gcloud container clusters get-credentials appointment-cluster --zone europe-west1-b 
+    
+    kubectl create deployment appointment --image=gcr.io/totemic-sector-341014/appointment:v1
+    
+    kubectl scale deployment appointment --replicas=3
+    
+    kubectl autoscale deployment appointment --cpu-percent=80 --min=1 --max=5
+    
+    kubectl expose deployment appointment --name=appointment-service --type=LoadBalancer --port 3000 --target-port 3000
