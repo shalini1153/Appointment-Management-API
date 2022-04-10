@@ -17,7 +17,7 @@ export const config = {
     },
 
     // Server port
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8000,
 
     // Server IP
     ip: process.env.IP || "0.0.0.0",
@@ -54,5 +54,12 @@ export const config = {
         },
         privateKey: 'privatetoken',
     },
+    healthAPI: {
+        url: 'https://api.1up.health/user-management/v1/user/auth-code',
+        app_user_id: 'shalini_jain',
+        client_id: 'ba10613b1033af0f1f27033779f3bf2a',
+        client_secret: '52e9f913a4e81c874cf2a6fbb4c3b367',
+        token_url: 'https://auth.1up.health/oauth2/token'
+    }
 
 };

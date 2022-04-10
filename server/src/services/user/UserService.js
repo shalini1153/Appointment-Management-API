@@ -106,4 +106,44 @@ export class UserService {
         return isValidPass;
     }
 
+    async verifyUserToken(token) {
+        const userRepo = new UserRepository();
+        const tokenData = await this.fetchUserByToken(token);
+        console.log(`tokenData is ${tokenData}`);
+        console.log(`tokenData is ${tokenData.endTime}`);
+        if (tokenData && tokenData.endTime) {
+            const timedifference = moment(tokenData.endTime).utc().diff(moment().utc().format(), "minutes");
+            console.log(`Time difference is ${timedifference}`);
+            if (timedifference > 0 && tokenData.isLoggedIn) {
+                //valid token
+                const refreshToken = tokenData.token;
+                await this.RefreshUserToken(refreshToken);
+                return tokenData._id;
+            } else {
+                if (tokenData.isLoggedIn) {
+                    await userRepo.updateIsLoggedInByToken(
+                        tokenData.token
+                    );
+                }
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    async fetchUserByToken(token) {
+        const userRepo = new UserRepository();
+        return userRepo.fetchUserByToken(token);
+    }
+
+    async RefreshUserToken(refreshToken) {
+        const userRepo = new UserRepository();
+        const endTime = moment().utc().add(config.logoutExpTime, "minutes").format();
+        const res = await userRepo.updateExpireTime(refreshToken, endTime);
+        console.log("Res is",res);
+        return res;
+    }
+
+
 }

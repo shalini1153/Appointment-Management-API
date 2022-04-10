@@ -2,18 +2,17 @@ import ResponseMessage from "../utility/ReponseMessage";
 import { appCode } from "../constants/AppCode";
 import { httpStatus } from "../constants/HttpStatusCode";
 import {
-    unAuthorisedMessage,
-    tokenNotFoundMessage,
-    invalidToken,
+    errorMessages,
 } from "../../constants/MessageConstant";
-import { AuthService } from "../../services/auth/AuthService";
+import { UserService } from "../../services/user/UserService";
 import logger from "../Logger";
 import AppError from "../utility/AppError";
 export const authorization = () => {
     return async (req, res, next) => {
         try {
+            console.log("In authorize");
             let bearerToken;
-            const userAuthService = new AuthService();
+            const userAuthService = new UserService();
             // @ get services for container
 
             const obj = new ResponseMessage();
@@ -47,23 +46,25 @@ export const authorization = () => {
                     bearerToken = token.split(" ")[1];
                 }
             }
+            console.log("bearerToken",bearerToken);
             if (!bearerToken) {
-                obj.message = tokenNotFoundMessage;
+                obj.message = errorMessages.tokenNotFoundMessage;
                 return res.status(httpStatus.unAuthorised).send(obj);
             } else {
                 try {
                     const userId = await userAuthService.verifyUserToken(
                         bearerToken
                     );
+                    console.log("userId",userId);
                     if (!userId) {
-                        throw new AppError(invalidToken);
+                        throw new AppError(errorMessages.invalidToken);
                     }
                     //const user = await userAuthService.getUserById();
                     //req.user = user; // @inject user in the request Session i.e stateless protocol
                     next(); //@ by pass to the next request or middleware
                 } catch (tokenError) {
                     logger.error(`###tokenError ${tokenError}`);
-                    obj.message = unAuthorisedMessage;
+                    obj.message = errorMessages.unAuthorisedMessage;
                     return res.status(httpStatus.unAuthorised).send(obj);
                 }
             }

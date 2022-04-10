@@ -41,7 +41,7 @@ export class PatientService {
     async getAllPatients() {
         try {
             const patientRepo = new PatientRepository();
-            logger.info('Start executing service => findPatientByIdServ');
+            logger.info('Start executing service => getAllPatients');
             return await patientRepo.findAllPatients();
         }
         catch (e) {

@@ -42,7 +42,7 @@ export default class DoctorController extends BaseController {
             logger.info("Started Exceution for updateDoctorDetails Controller");
             const responseObj = new ReponseMessage();
             const doctorService = new DoctorService();
-            const data = await doctorService.updateDoctorServ(req.body);
+            const data = await doctorService.updateDoctorServ(req.param.id,req.body);
             if (data) {
                 responseObj.data = data;
                 super.createResponse.success(res, responseObj);
@@ -60,6 +60,40 @@ export default class DoctorController extends BaseController {
             const doctorService = new DoctorService();
             const responseObj = new ReponseMessage();
             const data = await doctorService.findDoctorByIdServ(req.params.id);
+            logger.info(data);
+            if (data) {
+                responseObj.data = data;
+                super.createResponse.success(res, responseObj);
+            }
+        } catch (error) {
+            logger.error(error);
+            next(error);
+        }
+    }
+
+    async getAllDoctors(req, res, next) {
+        try {
+            logger.info("In Controller of getAllDoctors")
+            const doctorService = new DoctorService();
+            const responseObj = new ReponseMessage();
+            const data = await doctorService.getAllDoctors();
+            logger.info(data);
+            if (data) {
+                responseObj.data = data;
+                super.createResponse.success(res, responseObj);
+            }
+        } catch (error) {
+            logger.error(error);
+            next(error);
+        }
+    }
+
+    async searchDoctor(req, res, next) {
+        try {
+            logger.info("In Controller of searchDoctor")
+            const doctorService = new DoctorService();
+            const responseObj = new ReponseMessage();
+            const data = await doctorService.searchDoctor(req.query.searchString);
             logger.info(data);
             if (data) {
                 responseObj.data = data;

@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 export class UserRepository {
 
     async findCustomerByEmail(emailId) {
-        const user = await User.findOne({ "emailId" : emailId});
+        const user = await User.findOne({ "emailId": emailId });
         return user;
     }
 
@@ -19,12 +19,25 @@ export class UserRepository {
     }
 
     async findUserById(userId) {
-        return await User.findOne( { _id: mongoose.Types.ObjectId(userId) } );
+        return await User.findOne({ _id: mongoose.Types.ObjectId(userId) });
     }
 
     async saveCustomerSession(session) {
         const sessionDetails = new UserSession(session);
         return await sessionDetails.save();
+    }
+
+    async fetchUserByToken(token) {
+        return UserSession.findOne({ token }, {}, {});
+    }
+
+    async updateExpireTime(token, end_time) {
+        console.log('Start executing service => updateExpireTime');
+        return await UserSession.findOneAndUpdate({ token }, { end_time });
+    }
+
+    async updateIsLoggedInByToken(token) {
+        return UserSession.findOneAndUpdate({ isLoggedIn: false }, { token, "isLoggedIn": true });
     }
 }
 

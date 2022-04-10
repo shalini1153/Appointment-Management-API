@@ -16,7 +16,9 @@ export const errorMessages = {
     usernotActive : "This account is not active.",
     userPinFormatError:"Your Pin must be 6 digit in length",
     userPendingApproval : "Please check your email for the activation mail.",
-    userStatusError : "Failed to send activation mail"
+    userStatusError : "Failed to send activation mail",
+    unAuthorisedMessage: "UnAuthorized to access resources",
+    tokenNotFoundMessage: "Token is not present in request"
 }
 
 
