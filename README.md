@@ -1,4 +1,4 @@
-![til](./images/Screen.gif)
+![til](./Screen.gif)
 
 # Appointment-Management-API
 
