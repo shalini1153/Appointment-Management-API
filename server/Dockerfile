@@ -1,5 +1,5 @@
 # version of node to use
-FROM node:carbon
+FROM node:14.18-alpine
 # define working directory for docker
 WORKDIR /usr/src/app
 # copy all our source code into the working directory
