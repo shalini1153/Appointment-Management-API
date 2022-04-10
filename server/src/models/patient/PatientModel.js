@@ -25,6 +25,7 @@ const PatientSchema = new mongoose.Schema({
     emailId: {
         type: String,
         required: true,
+        unique: true
     },
     symptoms: {
         type: String,

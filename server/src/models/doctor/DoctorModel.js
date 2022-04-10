@@ -17,6 +17,7 @@ const DoctorSchema = new mongoose.Schema({
     emailId: {
         type: String,
         required: true,
+        unique: true
     },
     mobileNo: {
         type: String,
