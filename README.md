@@ -85,3 +85,9 @@ gcloud artifacts repositories create appointment-management-repo --repository-fo
     kubectl autoscale deployment appointment --cpu-percent=80 --min=1 --max=5
     
     kubectl expose deployment appointment --name=appointment-service --type=LoadBalancer --port 3000 --target-port 3000
+    
+    kubectl delete service appointment-service
+    
+    gcloud container clusters delete appointment-cluster-cluster --zone europe-west1-b
+    
+    gcloud container images delete gcr.io/totemic-sector-341014/appointment:v1  --force-delete-tags --quiet
