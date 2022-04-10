@@ -13,6 +13,7 @@ We have also used <b>api.1up.health</b> external api to get the list of hospital
 
 # System Architecture
 
+![alt text](./Architecture-Diagram.png)
 
 
 ba10613b1033af0f1f27033779f3bf2a
