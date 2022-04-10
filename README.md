@@ -22,7 +22,7 @@ gcloud services enable containerregistry.googleapis.com
 
 docker push gcr.io/totemic-sector-341014/appointment:v1
 
-gcloud builds submit --tag us-central1-docker.pkg.dev/totemic-sector-341014/quickstart-docker-repo/appointment:v1
+gcloud builds submit --tag us-central1-docker.pkg.dev/totemic-sector-341014/appointment-management-repo/appointment:v1
 
 docker run gcr.io/totemic-sector-341014/appointment:v1
 
@@ -37,4 +37,7 @@ http://35.246.44.203:8000
 resourcemanager.projects.get
 serviceusage.services.get
 
-kubectl create deployment clublit --image=gcr.io/totemic-sector-341014/appointment:v1
+kubectl create deployment appointment-management --image=gcr.io/totemic-sector-341014/appointment:v1
+
+gcloud artifacts repositories create appointment-management-repo --repository-format=docker \
+    --location=us-central1 --description="Docker repository"
