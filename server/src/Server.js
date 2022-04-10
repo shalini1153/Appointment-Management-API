@@ -4,7 +4,7 @@ dotenv.config();
 import app from "./App";
 import config from "./config/Index";
 import logger from "./core/Logger";
-import mongoose from 'mongoose';
+import { connect } from './core/DbConnection';
 
 const PORT = process.env.PORT || config.port;
 const HOST = process.env.HOST || config.host;
@@ -27,24 +27,18 @@ const stopServer = () => {
   server.close(() => {
     logger.warn(`${config.apiName}is Stopped in IP: ${HOST}  PORT : ${PORT}`);
   });
-  //});
 };
 
 const startServer = async () => {
-  console.log("start");
   console.info("Starting Db Server");
   try {
-    // Or using promises
-    mongoose.connect('mongodb://34.136.106.63:27017/appointment_management').then(
-      () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
-      err => { /** handle initial connection error */ }
-    );
+    //To connect database
+    await connect();
     listen();
   }
   catch (e) {
     console.log(e.message);
   }
-
 };
 
 export {

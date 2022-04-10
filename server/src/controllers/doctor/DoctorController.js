@@ -7,12 +7,13 @@ export default class DoctorController extends BaseController {
 
     async addDoctorDetails(req, res, next) {
         try {
-            logger.info("Started Exceution for addPatientDetails Controller");
+            logger.info("Started Exceution for addDoctorDetails Controller");
             const responseObj = new ReponseMessage();
             const doctorService = new DoctorService();
             const data = await doctorService.addDoctorServ(req.body);
             if (data) {
                 responseObj.data = data;
+                responseObj.httpStatusCode = 201;
                 super.createResponse.success(res, responseObj);
             }
         } catch (error) {
@@ -45,6 +46,7 @@ export default class DoctorController extends BaseController {
             const data = await doctorService.updateDoctorServ(req.param.id,req.body);
             if (data) {
                 responseObj.data = data;
+                responseObj.httpStatusCode = 201;
                 super.createResponse.success(res, responseObj);
             }
         } catch (error) {

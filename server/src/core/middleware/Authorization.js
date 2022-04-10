@@ -59,8 +59,6 @@ export const authorization = () => {
                     if (!userId) {
                         throw new AppError(errorMessages.invalidToken);
                     }
-                    //const user = await userAuthService.getUserById();
-                    //req.user = user; // @inject user in the request Session i.e stateless protocol
                     next(); //@ by pass to the next request or middleware
                 } catch (tokenError) {
                     logger.error(`###tokenError ${tokenError}`);

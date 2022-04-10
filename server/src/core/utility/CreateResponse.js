@@ -13,7 +13,7 @@ class CreateResponse {
             ResponseMessageObj.appCode = appCode.success;
         }
 
-        res.status(httpStatus.ok);
+        res.status(ResponseMessageObj.httpStatusCode);
         res.send(ResponseMessageObj);
 
     }

@@ -13,6 +13,7 @@ export default class PatientController extends BaseController {
             const data = await patientService.addPatientServ(req.body);
             if (data) {
                 responseObj.data = data;
+                responseObj.httpStatusCode = 201;
                 super.createResponse.success(res, responseObj);
             }
         } catch (error) {
@@ -45,6 +46,7 @@ export default class PatientController extends BaseController {
             const data = await patientService.updatePatientServ(req.params.id,req.body);
             if (data) {
                 responseObj.data = data;
+                responseObj.httpStatusCode = 201;
                 super.createResponse.success(res, responseObj);
             }
         } catch (error) {
@@ -73,7 +75,7 @@ export default class PatientController extends BaseController {
 
     async getAllPatients(req, res, next) {
         try {
-            logger.info("In Controller of findPatientById")
+            logger.info("In Controller of getAllPatients")
             const patientService = new PatientService();
             const responseObj = new ReponseMessage();
             const data = await patientService.getAllPatients();

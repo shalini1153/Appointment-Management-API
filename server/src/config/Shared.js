@@ -17,7 +17,7 @@ export const config = {
     },
 
     // Server port
-    port: process.env.PORT || 8000,
+    port: process.env.PORT || 3000,
 
     // Server IP
     ip: process.env.IP || "0.0.0.0",
@@ -37,12 +37,7 @@ export const config = {
     log: Boolean(process.env.LOG),
     
     dbDetails: {
-        HOST: process.env.DB_HOST,
-        USER: process.env.DB_USER,
-        PASSWORD: process.env.DB_PASSWORD,
-        dialect: process.env.DIALECT,
-        DB_NAME: process.env.DB_NAME,
-        CUSTOMER_DB: process.env.CUSTOMER_DB_NAME,
+        URL: 'mongodb://34.136.106.63:27017/appointment_management',
     },
 
     filePath: "./public",
@@ -54,6 +49,7 @@ export const config = {
         },
         privateKey: 'privatetoken',
     },
+
     healthAPI: {
         url: 'https://api.1up.health/user-management/v1/user/auth-code',
         app_user_id: 'shalini_jain',
