@@ -13,17 +13,18 @@ export class UserService {
         try {
             const userRepo = new UserRepository();
             const tokenService = new TokenService(config.token.privateKey, config.token.options);
-            console.log("Request body is",config.token.privateKey);
+            console.log("Request body is", config.token.privateKey);
             const emailResponse = await userRepo.findCustomerByEmail(user.emailId);
-            console.log("Email Response is",emailResponse);
+            console.log("Email Response is", emailResponse);
             if (emailResponse?.emailId) {
                 const isValidPass = await this.comparePassword(user.password, emailResponse.password);
                 if (!isValidPass) {
+                    console.log("Invalid password", messages.errorMessages.passwordIncorrect);
                     throw new AppError(messages.errorMessages.passwordIncorrect);
                 }
                 else {
                     console.log("Password Valid");
-                    const token = tokenService.sign({},config.token.privateKey,config.token.options);
+                    const token = tokenService.sign({}, config.token.privateKey, config.token.options);
                     const startTime = moment().utc().format();
                     const endTime = moment().utc().add(config.logoutExpTime, "minutes").format();
                     const usertokendata = {
@@ -44,7 +45,7 @@ export class UserService {
                     };
                 }
             }
-            else{
+            else {
                 throw new Error("Invalid Username or Password!")
             }
         }
@@ -112,21 +113,7 @@ export class UserService {
         console.log(`tokenData is ${tokenData}`);
         console.log(`tokenData is ${tokenData.endTime}`);
         if (tokenData && tokenData.endTime) {
-            const timedifference = moment(tokenData.endTime).utc().diff(moment().utc().format(), "minutes");
-            console.log(`Time difference is ${timedifference}`);
-            if (timedifference > 0 && tokenData.isLoggedIn) {
-                //valid token
-                const refreshToken = tokenData.token;
-                await this.RefreshUserToken(refreshToken);
-                return tokenData._id;
-            } else {
-                if (tokenData.isLoggedIn) {
-                    await userRepo.updateIsLoggedInByToken(
-                        tokenData.token
-                    );
-                }
-                return false;
-            }
+            return tokenData._id;
         } else {
             return false;
         }
@@ -141,7 +128,7 @@ export class UserService {
         const userRepo = new UserRepository();
         const endTime = moment().utc().add(config.logoutExpTime, "minutes").format();
         const res = await userRepo.updateExpireTime(refreshToken, endTime);
-        console.log("Res is",res);
+        console.log("Res is", res);
         return res;
     }
 

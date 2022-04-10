@@ -7,7 +7,7 @@ export class PatientRoutes {
                 const controller = new PatientController();
                 const router = express.Router();
                 router.get("/:id", authorization(), controller.findPatientById);
-                router.get("/", authorization(), controller.getAllPatients);
+                router.get("/", controller.getAllPatients);
                 router.post("/addPatient", authorization(), controller.addPatientDetails);
                 router.put("/updatePatient/:id", authorization(), controller.updatePatientDetails);
                 router.delete("/deletePatient/:id", authorization(), controller.deletePatientById);

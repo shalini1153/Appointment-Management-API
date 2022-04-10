@@ -6,8 +6,8 @@ export default class AppError extends Error {
         super();
         Error.call(this);
         Error.captureStackTrace(this);
-        AppError.message = _message;
-        AppError.isOperational = _isOperational;
+        this.message = _message;
+        this.isOperational = _isOperational;
         this.httpStatusCode = _httpStatusCode;
     }
 }

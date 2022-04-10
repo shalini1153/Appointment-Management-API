@@ -16,7 +16,7 @@ export default class UserController extends BaseController {
                 super.createResponse.success(res, responseObj);
             }
         } catch (error) {
-            logger.error(error);
+            console.log(error);
             next(error);
         }
     }
@@ -33,7 +33,7 @@ export default class UserController extends BaseController {
                 super.createResponse.success(res, responseObj);
             }
         } catch (error) {
-            logger.error(error);
+            console.log(error);
             next(error);
         }
     }
