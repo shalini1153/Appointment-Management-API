@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 @Injectable({
     providedIn: 'root'
 })
@@ -26,7 +27,7 @@ export class UserLoginService {
             "emailId": username,
             "password": pass
         }
-        return this.http.post('http://35.246.44.203:3000/appointment/api/user/login', body);
+        return this.http.post(`${environment.apiUrl}/api/user/login`, body);
         //return false;
     }
     SignOut() {

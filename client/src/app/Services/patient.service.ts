@@ -2,20 +2,21 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patient } from '../Models/patient.model';
-import { map } from 'rxjs/operators'; 
+import { map } from 'rxjs/operators';
 import { PatientDetail } from '../Models/patientDetail.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
-  total: number=0;
+  total: number = 0;
 
-  constructor(private http: HttpClient,) { 
+  constructor(private http: HttpClient,) {
   }
 
-  getAllPatient(): Observable<any>{ 
-    return this.http.get('http://35.246.44.203:3000/appointment/api/patient/');
+  getAllPatient(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/appointment/api/patient/`);
   }
 
   /*findPatients(filter='', sortOrder='asc',
@@ -43,34 +44,34 @@ export class PatientService {
   
   }*/
 
-  getPatientDetails(id: number):Observable<PatientDetail>{
+  getPatientDetails(id: number): Observable<PatientDetail> {
 
-    return new Observable<PatientDetail>(obs=>{
-        let temp= this.patientDetail.find(o=> o.patientId == id);
-        obs.next(temp);
+    return new Observable<PatientDetail>(obs => {
+      let temp = this.patientDetail.find(o => o.patientId == id);
+      obs.next(temp);
     });
 
     /*
       return this.http.get<Patient>('api/patients',{ params: new HttpParams().set('id', id) });
 
     */
-    
+
   }
 
-  addNewPatient(data: PatientDetail): boolean{
-     
-    try{
+  addNewPatient(data: PatientDetail): boolean {
 
-      let id: number= this.patientDetail[this.patientDetail.length-1].patientId + 1;
-      data.patientId= id;
+    try {
+
+      let id: number = this.patientDetail[this.patientDetail.length - 1].patientId + 1;
+      data.patientId = id;
 
       this.patientDetail.push(data);
       return true;
 
-    }catch(e){
+    } catch (e) {
       return false;
     }
-      
+
     /*
       let result: boolean=false; 
       this.http.post<boolean>('api/patient', data).pipe(take(1)).subscribe(d =>{ result=d });
@@ -78,102 +79,102 @@ export class PatientService {
     */
   }
 
-  updatePatient(data: PatientDetail): boolean{
-     
-    try{
+  updatePatient(data: PatientDetail): boolean {
 
-      let i: number = this.patientDetail.findIndex(o=> o.patientId == data.patientId);
-      this.patientDetail[i]=data;
+    try {
+
+      let i: number = this.patientDetail.findIndex(o => o.patientId == data.patientId);
+      this.patientDetail[i] = data;
 
       return true;
 
-    }catch(e){
+    } catch (e) {
       return false;
     }
-        
+
   }
 
-  
-  patientDetail: PatientDetail[]=[
+
+  patientDetail: PatientDetail[] = [
     {
       patientId: 8923, firstName: 'Saurabh', lastName: 'Mehra', gender: 'Male', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8924, firstName: 'Radhika', lastName: 'Madan', gender: 'Female', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8925, firstName: 'Karan', lastName: 'Sharma', gender: 'Male', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8926, firstName: 'Siya', lastName: 'Gupta', gender: 'Female', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8927, firstName: 'Aryan', lastName: 'Obroy', gender: 'Male', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8928, firstName: 'Kratika', lastName: 'Bisht', gender: 'Female', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8929, firstName: 'Rekha', lastName: 'Bora', gender: 'Female', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8930, firstName: 'Payal', lastName: 'Verma', gender: 'Female', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8931, firstName: 'Priya', lastName: 'Singh', gender: 'Female', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     },
     {
       patientId: 8932, firstName: 'Rohit', lastName: 'Sharma', gender: 'Male', age: 23,
       maritalStatus: 'Single', dob: new Date(Date.parse("February 14, 1999")), religion: 'Hindu',
       phone: '7412067123', email: 'saurabh123@gmail.com', nationality: 'Indian', state: 'Uttarakhand',
-      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma', 
-      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com', 
-      relativeOccupation: 'Software Engineer', relativeAddress:'C/o- V K Verma, Vill- abcd, Vill- abcd'
+      occupation: 'Software Engineer', address: 'C/o- J S Mehra, Vill- abcd', relativeName: 'Suresh Verma',
+      relativeRelation: 'Maternal Uncle', relativePhone: '8934527831', relativeEmail: 'suresh123@gmail.com',
+      relativeOccupation: 'Software Engineer', relativeAddress: 'C/o- V K Verma, Vill- abcd, Vill- abcd'
     }
   ];
 
