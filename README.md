@@ -1,5 +1,9 @@
 # Appointment-Management-API
-![til](./Screen_login.gif)
+<p align="center">
+  <img src="Screen_login.gif" height="400" />
+</p>
+
+This project is developed as a part of coursework for Cloud Computing taught by [Dr. Sukhpal Singh Gill].We have developed REST API and have deployed our application on cloud using docker and kubernetes
 
 ## Table of Contents
 - [About](#about)
