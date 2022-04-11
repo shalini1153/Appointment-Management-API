@@ -9,9 +9,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [ Project images ](#Project-Image)
 * [ Version Details ](#Version-Details)
 * [ Development server](#Development-server) 
-* [ Code scaffolding](#Code-scaffolding)
 * [ Build](#Build)
-* [ Running unit tests](#Running-unit-tests)
+
 
 # Project Image 
 
