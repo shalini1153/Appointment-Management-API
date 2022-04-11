@@ -75,8 +75,8 @@ docker images
 ##### After creating an image we need to push it to GCP Container Registry
 You will have to enable [Container Registry API](https://console.cloud.google.com/apis/library/containerregistry.googleapis.com) and also you will need to create an artifact in here [Artifact Registry API](https://cloud.google.com/artifact-registry). You will also need to enable API access and add roles to your user to access the above mentioned registry.
 
-<img src="Roles.png" />
-<img src="Permission.png" />
+<img src="Roles.png" height="100"/>
+<img src="Permission.png" height="100" />
 
 
 
