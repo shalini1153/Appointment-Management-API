@@ -14,7 +14,6 @@ This project is developed as a part of coursework for Cloud Computing taught by 
     - [Google Cloud](#google-cloud)
   - [Running Locally](#running-locally)
     - [Local Node.js Installation](#local-node-installation)
-    - [Docker Container](#docker-container)
  - [Front-end](#front-end)
  - [Conclusion](#conclusion)
 # About
@@ -121,6 +120,16 @@ gcloud container clusters delete appointment-management-appointment-management -
 ```
 ```
 gcloud container images delete gcr.io/${PROJECT_ID}/appointment:v1  --force-delete-tags --quiet
+```
+### Running Locally
 
+You can follow below steps to run the application locally
+```
+npm install
+```
+```
+npm run start
+```
+The application will be running on http://localhost:3000
 
 
