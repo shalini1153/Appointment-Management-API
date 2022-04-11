@@ -132,4 +132,24 @@ npm run start
 ```
 The application will be running on http://localhost:3000
 
+## Front-end
+The current version of the front-end is being developed using angular and can run locally.[Node.js](https://nodejs.org/en/) is required alongside with the respective Node version.
+
+To launch the front end, navigate into the front-end folder of the repository. 
+```
+cd client
+```
+
+Install dependencies.
+```
+npm install
+```
+
+Start the front-end node.js server by typing:
+```
+npm start
+```
+
+###### Conclusion
+This project uses REST API protocols and has basic CRUD operations for doctor and patient.The current application is also deployed on GCP cloud using docker and kubernetes. We have also integrated external API to enhance our application.Role and permission managament is done on GCP cloud to access different resources on the cloud. Sensitive information like user password is hashed using salt and hash based algorith using bcrypt. We have also added user and roles on database for security reasons.
 
