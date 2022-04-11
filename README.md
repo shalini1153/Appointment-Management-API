@@ -51,20 +51,30 @@ __Note:__ : You will need a gcp account to follow the steps. Link to Create an a
 
 First, launch the cloud shell and clone the repository by:
 ``` 
-git clone https://github.com/nahidtopalovic/library_api.git
+git clone https://github.com/shalini1153/Appointment-Management-API.git
 ```
 Navigate into the repository by typing 
 ```
-cd library-api
+cd Appointment-Management-System
 ```
-Verify your project ID (note you must change ``PROJECT_ID`` with your project ID, which can be found by typing ``gloud projects list``)
+Project Id can be verified using the command ``gloud projects list``
+
+Also set the PROJECT_ID variable with your GCP project Id using below command
+```
+export PROJECT_ID= PROJECT_ID
+```
+Now you can create a docker image of your code using the following command. __Note__: You need Dockerfile in your code repo to execute this command. Sample can be found in server folder.
+```
+docker build -t ${PROJECT_ID}/appointment:v1 .
+```
+After executing the command you can check your image using the command 
 
 ```
-export PROJECT_ID= PROJECT_ID
+docker images
 ```
-Once applied, test it with the following command. 
-```
-export PROJECT_ID= PROJECT_ID
-```
-Now you may copy-paste the following commands without adjusting.
+##### After creating an image we need to push it to GCP Container Registry
+You will have to enable [Container Registry API](https://console.cloud.google.com/apis/library/containerregistry.googleapis.com) and also you will need to create an artifact in here [Artifact Registry API](https://cloud.google.com/artifact-registry). You will also need to enable API access and add roles to your user to access the above mentioned registry.
+
+
+
 
