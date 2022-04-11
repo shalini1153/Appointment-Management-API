@@ -4,7 +4,7 @@
 ## Table of Contents
 
 * [ About ](#About)
-* [ System Architecture ](#System Architecture)
+* [ System Architecture](#System Architecture)
 * [ Development server](#Development-server) 
 * [ Build](#Build)
 * 
@@ -16,7 +16,7 @@ This platform can be used as an POC and others features can be developed later o
 
 We have also used <b>api.1up.health</b> external api to get the list of hospitals and doctors.Security mechanisms are implemented in the project by using salt and hash based authenticatin. We have also implemented session management for the user.Currently the backend service is deployed on Cloud using docker and kubernetes. Also you can access the backend locally using the guide mention below.
 
-# System Architecture
+## System Architecture
 
 ![alt text](./Architecture-Diagram.png)
 
