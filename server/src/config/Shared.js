@@ -37,7 +37,7 @@ export const config = {
     log: Boolean(process.env.LOG),
     
     dbDetails: {
-        URL: 'mongodb://34.136.106.63:27017/appointment_management',
+        URL: process.env.MONGO_URI,
     },
 
     filePath: "./public",
