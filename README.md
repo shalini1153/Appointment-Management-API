@@ -36,8 +36,14 @@ The backend is a REST-based service interface for CRUD operations (for example, 
 
 
 ## Backend
-We have used Nodejs to build our backend application using express framework. It is advisable to use [Postman](https://www.postman.com/) to test the CRUD operations when accessing the backend.The CRUD operations are explained in detail in the next section.
+We have used Nodejs to build our backend application using express framework. It is advisable to use [Postman](https://www.postman.com/) to test the CRUD operations when accessing the backend.The CRUD operations are explained in detail in the next section.Backend code is available in the server folder with all the subfolders for code management and readability purpose.
 
 ### CRUD Operations
 
 ### Cloud App
+
+The project is deployed on GCP cloud using docker and the application is also load balanced using Kubernetes.
+
+Following steps can be followed to deploy our project on cloud.
+__Note:__ : You will need a gcp account to follow the steps. Link to Create an account can be found here [GCP](https://cloud.google.com/gcp/). Also once you login into GCP you need to create a project and keep a note of projectId for further steps
+
