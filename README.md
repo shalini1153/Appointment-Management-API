@@ -4,7 +4,7 @@
 ## Table of Contents
 
 * [ About ](#About)
-* [ Version Details ](#System Architecture)
+* [ System Architecture ](#System Architecture)
 * [ Development server](#Development-server) 
 * [ Build](#Build)
 * 
