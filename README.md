@@ -75,8 +75,55 @@ docker images
 ##### After creating an image we need to push it to GCP Container Registry
 You will have to enable [Container Registry API](https://console.cloud.google.com/apis/library/containerregistry.googleapis.com) and also you will need to create an artifact in here [Artifact Registry API](https://cloud.google.com/artifact-registry). You will also need to enable API access and add roles to your user to access the above mentioned registry.
 
-<img src="Roles.png" height="200"/>   <img src="Permission.png" height="200" />
+<img src="Roles.png" height="200"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   <img src="Permission.png" height="200" />
 
+To push image to GCP use below command:
+Now we push the image
+```
+docker push gcr.io/${PROJECT_ID}/appointment:v1
+```
+Next Step is to create a GKE cluster on GCP
+```
+Creating the deployment
+```
+kubectl create appointment-management --image=gcr.io/${PROJECT_ID}/appointment:v1
+
+```
+We have created 3 replica sets to load balance or to three deployment replicas
+```
+kubectl scale deployment appointment-management --replicas=3
+```
+Checking if our pods are created successfully:
+```
+kubectl get pods
+```
+#### Exposing our application to INTERNET
+In our case, we require port 3000, as our development .env file contains information to connect to MongoDB set to port 3000.
+
+```
+kubectl expose deployment appointment-management --name=appointment-management-service --type=LoadBalancer --port 3000 --target-port 3000
+```
+
+Verify that the services are running :
+```
+kubectl get service
+```
+Attached screenshot of the clusters created using kubernetes
+
+<img src="GCP_Clusters.png" height="400" />
+
+It takes time to deploy our service so the intial state will be ``<pending>``. 
+
+#### Delete the Service,  Cluster & Images
+If you are done testing our educational application you may follow these steps:
+```
+kubectl delete service appointment-management-service
+```
+```
+gcloud container clusters delete appointment-management-appointment-management --zone europe-west1-b
+```
+```
+gcloud container images delete gcr.io/${PROJECT_ID}/appointment:v1  --force-delete-tags --quiet
 
 
 
