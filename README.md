@@ -3,7 +3,7 @@
   <img src="Screen_login.gif" height="400" />
 </p>
 
-This project is developed as a part of coursework for Cloud Computing taught by [Dr. Sukhpal Singh Gill].We have developed REST API and have deployed our application on cloud using docker and kubernetes
+This project is developed as a part of coursework for Cloud Computing taught by [Dr. Sukhpal Singh Gill]. We have developed REST API and have deployed our application on cloud using docker and kubernetes
 
 ## Table of Contents
 - [About](#about)
@@ -28,7 +28,10 @@ We have also used <b>api.1up.health</b> external api to get the list of hospital
 
 ## System Architecture
 
-![alt text](./Architecture-Diagram.png)
+<p align="center">
+  <img src="Architecture-Diagram.png" height="400" />
+</p>
+
 
 ## Backend
 
