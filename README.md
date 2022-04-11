@@ -10,7 +10,7 @@ This project is developed as a part of coursework for Cloud Computing taught by 
 - [System Architecture](#system-architecture)
 - [Backend](#backend)
   - [CRUD Operations](#crud-operations)
-  - [Cloud App](#cloud-app)
+  - [Cloud Deployment](#cloud-deployment)
     - [Google Cloud](#google-cloud)
   - [Running Locally](#running-locally)
     - [Local Node.js Installation](#local-node-installation)
@@ -40,3 +40,4 @@ We have used Nodejs to build our backend application using express framework. It
 
 ### CRUD Operations
 
+### Cloud App
