@@ -47,3 +47,24 @@ The project is deployed on GCP cloud using docker and the application is also lo
 Following steps can be followed to deploy our project on cloud.
 __Note:__ : You will need a gcp account to follow the steps. Link to Create an account can be found here [GCP](https://cloud.google.com/gcp/). Also once you login into GCP you need to create a project and keep a note of projectId for further steps
 
+##### Pre-Deployment
+
+First, launch the cloud shell and clone the repository by:
+``` 
+git clone https://github.com/nahidtopalovic/library_api.git
+```
+Navigate into the repository by typing 
+```
+cd library-api
+```
+Verify your project ID (note you must change ``PROJECT_ID`` with your project ID, which can be found by typing ``gloud projects list``)
+
+```
+export PROJECT_ID= PROJECT_ID
+```
+Once applied, test it with the following command. 
+```
+export PROJECT_ID= PROJECT_ID
+```
+Now you may copy-paste the following commands without adjusting.
+
