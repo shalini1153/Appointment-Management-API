@@ -14,7 +14,6 @@ This project is developed as a part of coursework for Cloud Computing taught by 
     - [Google Cloud](#google-cloud)
   - [Running Locally](#running-locally)
     - [Local Node.js Installation](#local-node-installation)
-    - [NVM](#nvm)
     - [Docker Container](#docker-container)
  - [Front-end](#front-end)
  - [Conclusion](#conclusion)
