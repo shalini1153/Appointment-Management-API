@@ -32,6 +32,9 @@ We have also used <b>api.1up.health</b> external api to get the list of hospital
   <img src="Architecture Diagram-2.png" height="400" />
 </p>
 
+The front-end is developed using angular library and is compatible with all browser versions and it is also responsive on mobile screens as well.
+The backend is a REST-based service interface for CRUD operations (for example, user sign up & login, CRUD operations on doctor and patient like POST, PUT) deployed via Google Cloud to facilitate scalable performance with Kubernetes of our dockerized image. The node server interacts with api.1up.health API. We have use an extranl NoSQL database i.e MongoDB which is hosted on cloud to store information about patients, users of the system and doctors. Since this is the microservice we can design multiple rest based API using different programming language like python, java, etc to make our application seamless. Adding other languages wont affect the system design and this in turn will make our system robust.
+
 
 ## Backend
 
