@@ -3,7 +3,16 @@
   <img src="Screen_login.gif" height="400" />
 </p>
 
-This project is developed as a part of coursework for Cloud Computing taught by [Dr. Sukhpal Singh Gill]. We have developed REST API and have deployed our application on cloud using docker and kubernetes
+This project is developed as a part of coursework for Cloud Computing taught by [Dr. Sukhpal Singh Gill]. We have developed REST API and have deployed our application on cloud using docker and kubernetes.
+
+We have implemented following points as the part of coursework: 
+- REST API with proper status code
+- Integration with external API
+- Cloud based Database
+- Load balancing using GKE cluster
+- Implementing hash-based authentication
+- Implementing user accounts and access management
+- Securing the database with role-based policies
 
 ## Table of Contents
 - [About](#about)
