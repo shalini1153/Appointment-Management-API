@@ -82,12 +82,9 @@ Now we push the image
 ```
 docker push gcr.io/${PROJECT_ID}/appointment:v1
 ```
-Next Step is to create a GKE cluster on GCP
-```
-Creating the deployment
+Next Step is to create a GKE cluster on GCP. Creating the deployment
 ```
 kubectl create appointment-management --image=gcr.io/${PROJECT_ID}/appointment:v1
-
 ```
 We have created 3 replica sets to load balance or to three deployment replicas
 ```
