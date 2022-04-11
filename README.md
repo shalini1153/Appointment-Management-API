@@ -110,7 +110,7 @@ kubectl get service
 ```
 Attached screenshot of the clusters created using kubernetes
 
-<img src="GCP_Clusters.png" height="400" />
+<img src="GCP Instances.png" height="400" />
 
 It takes time to deploy our service so the intial state will be ``<pending>``. 
 
