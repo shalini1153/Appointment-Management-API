@@ -29,7 +29,7 @@ We have also used <b>api.1up.health</b> external api to get the list of hospital
 ## System Architecture
 
 <p align="center">
-  <img src="Architecture-Diagram.png" height="400" />
+  <img src="Architecture Diagram-2.png" height="400" />
 </p>
 
 
