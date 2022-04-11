@@ -1,6 +1,6 @@
 # Appointment-Management-API
 <p align="center">
-  <img src="Screen_login.gif" height="400" />
+  <img src="./images/Screen_login.gif" height="400" />
 </p>
 
 This project is developed as a part of coursework for Cloud Computing taught by [Dr. Sukhpal Singh Gill]. We have developed REST API and have deployed our application on cloud using docker and kubernetes.
@@ -36,7 +36,7 @@ We have also used <b>api.1up.health</b> external api to get the list of hospital
 ## System Architecture
 
 <p align="center">
-  <img src="Architecture Diagram-2.png" height="400" />
+  <img src="./images/Architecture Diagram-2.png" height="400" />
 </p>
 
 The front-end is developed using angular library and is compatible with all browser versions and it is also responsive on mobile screens as well.
@@ -83,7 +83,7 @@ docker images
 ##### After creating an image we need to push it to GCP Container Registry
 You will have to enable [Container Registry API](https://console.cloud.google.com/apis/library/containerregistry.googleapis.com) and also you will need to create an artifact in here [Artifact Registry API](https://cloud.google.com/artifact-registry). You will also need to enable API access and add roles to your user to access the above mentioned registry.
 
-<img src="Roles.png" height="200"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   <img src="Permission.png" height="200" />
+<img src="./images/Roles.png" height="200"/> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   <img src="./images/Permission.png" height="200" />
 
 To push image to GCP use below command:
 Now we push the image
@@ -115,7 +115,7 @@ kubectl get service
 ```
 Attached screenshot of the clusters created using kubernetes
 
-<img src="GCP Instances.png" height="400" />
+<img src="./images/GCP Instances.png" height="400" />
 
 It takes time to deploy our service so the intial state will be ``<pending>``. 
 
